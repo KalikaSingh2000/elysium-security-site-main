@@ -5,6 +5,7 @@ import SectionWrapper from "@/components/SectionWrapper";
 import ContentImage from "@/components/ContentImage";
 import { caseStudies } from "@/data/caseStudies";
 import { Check, Quote } from "lucide-react";
+import { siteConfig } from "@/lib/siteConfig";
 
 const proofStats = [
   { value: "People", label: "identity and flow" },
@@ -27,7 +28,7 @@ const CaseStudies = () => (
                 Practical blueprints for common security challenges
               </h1>
               <p className="mt-6 max-w-2xl text-lg leading-8 text-muted-foreground">
-                These representative scenarios show how Elysium Security approaches planning.
+                These representative scenarios show how {siteConfig.companyName} approaches planning.
                 They are solution examples, not named client endorsements or performance claims.
               </p>
             </div>

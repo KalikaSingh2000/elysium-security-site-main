@@ -4,13 +4,22 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import SectionWrapper from "@/components/SectionWrapper";
-import { getProductBySlug } from "@/data/products";
+import { getProductBySlug, productCategories, products } from "@/data/products";
+import { industries } from "@/data/industries";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
-import { Check, ArrowLeft, ChevronDown, ChevronUp } from "lucide-react";
+import { Check, ArrowLeft, ArrowRight, ChevronDown, ChevronUp } from "lucide-react";
 import ProductVisual from "@/components/ProductVisual";
+import {
+  Breadcrumb,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbList,
+  BreadcrumbPage,
+  BreadcrumbSeparator,
+} from "@/components/ui/breadcrumb";
 
 const ProductDetail = () => {
   const { slug } = useParams<{ slug: string }>();
@@ -36,6 +45,11 @@ const ProductDetail = () => {
   }
 
   const displayedProduct = selectedImage ? { ...product, image: selectedImage } : product;
+  const category = productCategories.find((item) => item.id === product.category);
+  const suitableIndustries = industries.filter((industry) => product.industries.includes(industry.id));
+  const relatedProducts = products
+    .filter((item) => item.category === product.category && item.id !== product.id)
+    .slice(0, 4);
 
   return (
     <>
@@ -43,6 +57,35 @@ const ProductDetail = () => {
       <main>
         <section className="pt-32 pb-16" style={{ background: "var(--gradient-hero)" }}>
           <div className="section-container">
+            <Breadcrumb className="mb-6">
+              <BreadcrumbList className="text-primary-foreground/60">
+                <BreadcrumbItem>
+                  <BreadcrumbLink asChild className="hover:text-white">
+                    <Link to="/">Home</Link>
+                  </BreadcrumbLink>
+                </BreadcrumbItem>
+                <BreadcrumbSeparator />
+                <BreadcrumbItem>
+                  <BreadcrumbLink asChild className="hover:text-white">
+                    <Link to="/products">Products</Link>
+                  </BreadcrumbLink>
+                </BreadcrumbItem>
+                {category && (
+                  <>
+                    <BreadcrumbSeparator />
+                    <BreadcrumbItem>
+                      <BreadcrumbLink asChild className="hover:text-white">
+                        <Link to={`/products?category=${category.id}`}>{category.name}</Link>
+                      </BreadcrumbLink>
+                    </BreadcrumbItem>
+                  </>
+                )}
+                <BreadcrumbSeparator />
+                <BreadcrumbItem>
+                  <BreadcrumbPage className="text-white">{product.name}</BreadcrumbPage>
+                </BreadcrumbItem>
+              </BreadcrumbList>
+            </Breadcrumb>
             <Link to="/products" className="mb-6 inline-flex items-center gap-1 text-sm text-primary-foreground/70 transition-colors hover:text-accent">
               <ArrowLeft className="h-4 w-4" /> Back to Products
             </Link>
@@ -82,7 +125,7 @@ const ProductDetail = () => {
                       >
                         <img
                           src={image}
-                          alt=""
+                          alt={`${product.name} — view ${index + 1}`}
                           className="h-full w-full object-contain"
                           loading="lazy"
                         />
@@ -136,6 +179,23 @@ const ProductDetail = () => {
           </div>
         </SectionWrapper>
 
+        {suitableIndustries.length > 0 && (
+          <SectionWrapper>
+            <h2 className="mb-8 text-2xl font-heading font-bold text-foreground">Suitable Industries</h2>
+            <div className="flex flex-wrap gap-3">
+              {suitableIndustries.map((industry) => (
+                <Link
+                  key={industry.id}
+                  to={`/industries#${industry.slug}`}
+                  className="rounded-full border border-border bg-card px-4 py-2 text-sm font-medium text-foreground transition-colors hover:border-accent hover:text-accent"
+                >
+                  {industry.name}
+                </Link>
+              ))}
+            </div>
+          </SectionWrapper>
+        )}
+
         {product.faqs.length > 0 && (
           <SectionWrapper className="bg-secondary">
             <h2 className="mb-8 text-2xl font-heading font-bold text-foreground">Frequently Asked Questions</h2>
@@ -156,6 +216,32 @@ const ProductDetail = () => {
                   </button>
                   {openFaq === index && <div className="px-5 pb-5 text-muted-foreground">{faq.answer}</div>}
                 </div>
+              ))}
+            </div>
+          </SectionWrapper>
+        )}
+
+        {relatedProducts.length > 0 && (
+          <SectionWrapper>
+            <div className="mb-8 flex items-center justify-between">
+              <h2 className="text-2xl font-heading font-bold text-foreground">Related Products</h2>
+              {category && (
+                <Link to={`/products?category=${category.id}`} className="inline-flex items-center gap-1 text-sm font-medium text-accent">
+                  View all <ArrowRight className="h-3.5 w-3.5" />
+                </Link>
+              )}
+            </div>
+            <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
+              {relatedProducts.map((related) => (
+                <Link key={related.id} to={`/products/${related.slug}`} className="group overflow-hidden rounded-[1.6rem] border border-border bg-card card-hover">
+                  <div className="aspect-[4/3] bg-secondary">
+                    <ProductVisual product={related} imageClassName="group-hover:scale-[1.04]" />
+                  </div>
+                  <div className="p-4">
+                    <span className="text-xs font-medium uppercase tracking-wider text-accent">{related.subcategory}</span>
+                    <h3 className="mt-1 font-heading text-sm font-semibold text-foreground">{related.name}</h3>
+                  </div>
+                </Link>
               ))}
             </div>
           </SectionWrapper>

@@ -20,14 +20,13 @@ export const blogPosts: BlogPost[] = [
     slug: "best-biometric-attendance-system-india",
     excerpt:
       "Discover the top biometric attendance systems available in India, compare features, and find the perfect solution for your organization.",
-    featuredImage: "/uploads/products/face-recognition-attendance.jpg",
     content:
       "Biometric attendance systems have revolutionized how organizations track employee time and attendance in India. With the rise of remote work and flexible schedules, having a reliable biometric system is more critical than ever.\n\n## Why Choose Biometric Attendance?\n\nTraditional punch cards and manual registers are prone to buddy punching, errors, and manipulation. Biometric systems eliminate these issues by using unique physiological characteristics for identification.\n\n## Types of Biometric Systems\n\n### Face Recognition\nThe most advanced and hygienic option, face recognition systems offer contactless identification with accuracy rates exceeding 99%. Ideal for post-pandemic workplaces.\n\n### Fingerprint\nThe most widely deployed biometric modality, fingerprint readers are cost-effective and reliable for small to medium-sized organizations.\n\n### Palm Vein\nOffering the highest security level, palm vein recognition is nearly impossible to forge and works contactlessly.\n\n## Key Features to Look For\n\n1. **Speed**: Look for systems with sub-second recognition\n2. **Capacity**: Ensure the system supports your workforce size\n3. **Integration**: Check for HRMS and payroll compatibility\n4. **Connectivity**: WiFi, 4G, and Ethernet options\n5. **Durability**: IP ratings and operating temperature range\n\n## Conclusion\n\nInvesting in the right biometric attendance system can save your organization significant time and money while improving workforce discipline.",
     category: "Biometrics",
     author: "Security Insights Team",
     date: "2025-03-15",
     readTime: "8 min",
-    metaTitle: "Biometric Attendance System Buying Guide | Elysium Security",
+    metaTitle: "Biometric Attendance System Buying Guide | Elysium Solution India",
     metaDescription:
       "Compare the best biometric attendance systems in India. Face recognition, fingerprint & palm vein systems reviewed with features, pricing & recommendations.",
   },
@@ -71,7 +70,6 @@ export const blogPosts: BlogPost[] = [
     slug: "visitor-management-system-benefits",
     excerpt:
       "Learn how a digital visitor management system transforms your front desk operations, enhances security, and delivers measurable ROI.",
-    featuredImage: "/uploads/products/access-card-reader-stock.png",
     content:
       "A modern Visitor Management System (VMS) replaces outdated paper logbooks with a digital, streamlined process that enhances both security and visitor experience.\n\n## The Problem with Paper Logs\n\n- Illegible handwriting\n- No real-time visibility\n- No photo verification\n- No emergency data\n- Privacy concerns\n\n## Key Benefits of Digital VMS\n\n### 1. Enhanced Security\nPre-screen visitors against watchlists, capture photos, and maintain real-time records.\n\n### 2. Professional Image\nSelf-service kiosks and digital badges project a modern, professional image.\n\n### 3. Compliance\nMaintain audit trails for regulatory compliance (ISO, GDPR, etc.).\n\n### 4. Efficiency\nReduce check-in time by 70% with pre-registration and QR codes.\n\n## ROI Calculation\n\nFor a company with 50+ daily visitors:\n- Receptionist time saved: 3-4 hours/day\n- Paper and printing costs eliminated\n- Security incident reduction\n\n## Conclusion\n\nA VMS pays for itself within months while dramatically improving security and efficiency.",
     category: "Solutions",
@@ -122,7 +120,6 @@ export const blogPosts: BlogPost[] = [
     slug: "uvss-high-security-zones",
     excerpt:
       "Learn why UVSS is essential for military installations, government buildings, and critical infrastructure to detect under-vehicle threats.",
-    featuredImage: "/uploads/products/vehicle-inspection-stock.png",
     content:
       "Under Vehicle Surveillance Systems (UVSS) provide a critical security layer by automatically inspecting the undercarriage of vehicles entering high-security zones.\n\n## How UVSS Works\n\nAs a vehicle drives over the scanning platform (or past the side-mounted cameras), high-resolution line-scan cameras capture detailed images of the vehicle's undercarriage. These images are compared against a stored baseline to detect anomalies.\n\n## What Can UVSS Detect?\n\n- Explosive devices\n- Contraband packages\n- Vehicle modifications\n- Suspicious objects\n\n## Types of UVSS\n\n### Fixed (In-ground)\nPermanent installation for high-traffic checkpoints.\n\n### Portable\nMobile units for temporary checkpoints and events.\n\n## Integration\n\nModern UVSS integrates with ANPR cameras and boom barriers for a complete vehicle security checkpoint.\n\n## Conclusion\n\nUVSS is no longer optional for critical infrastructure - it is a standard requirement.",
     category: "Security",

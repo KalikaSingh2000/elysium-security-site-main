@@ -16,11 +16,11 @@ export interface Product {
 }
 
 export const productCategories = [
-  { id: "biometric", name: "Biometric Devices", icon: "Fingerprint" },
-  { id: "access-control", name: "Access Control", icon: "DoorOpen" },
-  { id: "vehicle-security", name: "Vehicle Security", icon: "Car" },
-  { id: "screening", name: "Screening Devices", icon: "ScanLine" },
-  { id: "software", name: "Software Solutions", icon: "Monitor" },
+  { id: "biometric-attendance", name: "Biometric & Attendance", icon: "Fingerprint" },
+  { id: "entrance-control", name: "Entrance Control", icon: "DoorOpen" },
+  { id: "vehicle-access", name: "Vehicle Access & Gate Automation", icon: "Car" },
+  { id: "perimeter-security", name: "Perimeter Security", icon: "ShieldAlert" },
+  { id: "security-screening", name: "Security Screening", icon: "ScanLine" },
 ];
 
 export const products: Product[] = [
@@ -28,7 +28,7 @@ export const products: Product[] = [
     id: "1",
     name: "Face Recognition Attendance System",
     slug: "face-recognition-attendance",
-    category: "biometric",
+    category: "biometric-attendance",
     subcategory: "Face Recognition",
     shortDescription:
       "AI-powered facial recognition for contactless attendance with 99.7% accuracy and anti-spoofing technology.",
@@ -77,15 +77,15 @@ export const products: Product[] = [
           "The system can recognize faces from 0.3m to 3m distance, making it suitable for various installation scenarios.",
       },
     ],
-    image: "/uploads/products/face-recognition-attendance.jpg",
-    gallery: ["/uploads/products/face-recognition-attendance.jpg"],
+    image: "/placeholder.svg",
+    gallery: ["/placeholder.svg"],
     industries: ["corporate", "industrial", "education", "government"],
   },
   {
     id: "2",
     name: "Fingerprint Biometric Device",
     slug: "fingerprint-biometric-device",
-    category: "biometric",
+    category: "biometric-attendance",
     subcategory: "Fingerprint",
     shortDescription:
       "High-precision optical fingerprint scanner with multi-spectral imaging for reliable authentication.",
@@ -131,7 +131,7 @@ export const products: Product[] = [
     id: "3",
     name: "Palm Recognition Terminal",
     slug: "palm-recognition-terminal",
-    category: "biometric",
+    category: "biometric-attendance",
     subcategory: "Palm Recognition",
     shortDescription:
       "Contactless palm vein recognition for hygienic, high-security biometric verification.",
@@ -162,7 +162,7 @@ export const products: Product[] = [
     id: "4",
     name: "Boom Barrier System",
     slug: "boom-barrier-system",
-    category: "access-control",
+    category: "vehicle-access",
     subcategory: "Boom Barriers",
     shortDescription:
       "Heavy-duty automatic boom barriers with RFID/ANPR integration for seamless vehicular access control.",
@@ -209,7 +209,7 @@ export const products: Product[] = [
     id: "5",
     name: "Tripod Turnstile",
     slug: "tripod-turnstile",
-    category: "access-control",
+    category: "entrance-control",
     subcategory: "Turnstiles",
     shortDescription:
       "Compact tripod turnstile with bi-directional passage and multi-credential reader support.",
@@ -247,7 +247,7 @@ export const products: Product[] = [
     id: "6",
     name: "Flap Barrier Gate",
     slug: "flap-barrier-gate",
-    category: "access-control",
+    category: "entrance-control",
     subcategory: "Flap Barriers",
     shortDescription:
       "Elegant flap barrier with ultra-fast retractable wings for premium access control environments.",
@@ -285,7 +285,7 @@ export const products: Product[] = [
     id: "7",
     name: "Speed Gate",
     slug: "speed-gate",
-    category: "access-control",
+    category: "entrance-control",
     subcategory: "Speed Gates",
     shortDescription:
       "Ultra-premium speed gate with full-height glass panels for maximum security and aesthetics.",
@@ -320,7 +320,7 @@ export const products: Product[] = [
     id: "8",
     name: "Baggage Scanner ESI BG-5030",
     slug: "baggage-scanner-esi-bg-5030",
-    category: "screening",
+    category: "security-screening",
     subcategory: "X-Ray Scanners",
     shortDescription:
       "Compact X-ray baggage scanner for hotels, offices, visitor management desks, and light-duty entry screening.",
@@ -365,7 +365,7 @@ export const products: Product[] = [
     id: "15",
     name: "Baggage Scanner ESI BG-6040 Compact",
     slug: "baggage-scanner-esi-bg-6040-compact",
-    category: "screening",
+    category: "security-screening",
     subcategory: "X-Ray Scanners",
     shortDescription:
       "Mid-size X-ray baggage scanner with external operator console for reception, plant, and campus security checks.",
@@ -410,7 +410,7 @@ export const products: Product[] = [
     id: "16",
     name: "Baggage Scanner ESI BG-6040",
     slug: "baggage-scanner-esi-bg-6040",
-    category: "screening",
+    category: "security-screening",
     subcategory: "X-Ray Scanners",
     shortDescription:
       "Standard 6040 tunnel baggage scanner for routine screening of visitor bags, parcels, and checkpoint carry-ins.",
@@ -449,7 +449,7 @@ export const products: Product[] = [
     id: "17",
     name: "Baggage Scanner ESI BG-1010",
     slug: "baggage-scanner-esi-bg-1010",
-    category: "screening",
+    category: "security-screening",
     subcategory: "X-Ray Scanners",
     shortDescription:
       "Large tunnel baggage and cargo scanner for bulky consignments, warehouse screening, and high-capacity checkpoints.",
@@ -494,7 +494,7 @@ export const products: Product[] = [
     id: "9",
     name: "Door Frame Metal Detector",
     slug: "door-frame-metal-detector",
-    category: "screening",
+    category: "security-screening",
     subcategory: "Metal Detectors",
     shortDescription:
       "Multi-zone walk-through metal detector with pinpoint detection and high-traffic throughput.",
@@ -530,7 +530,7 @@ export const products: Product[] = [
     id: "10",
     name: "Under Vehicle Surveillance System",
     slug: "under-vehicle-surveillance-system",
-    category: "vehicle-security",
+    category: "perimeter-security",
     subcategory: "UVSS",
     shortDescription:
       "Automated under-vehicle inspection with ANPR integration for comprehensive vehicle security screening.",
@@ -562,15 +562,15 @@ export const products: Product[] = [
       "Critical infrastructure",
     ],
     faqs: [],
-    image: "/uploads/products/vehicle-inspection-stock.png",
-    gallery: ["/uploads/products/vehicle-inspection-stock.png"],
+    image: "/placeholder.svg",
+    gallery: ["/placeholder.svg"],
     industries: ["government", "transport"],
   },
   {
     id: "11",
     name: "Hydraulic Bollard System",
     slug: "hydraulic-bollard-system",
-    category: "vehicle-security",
+    category: "perimeter-security",
     subcategory: "Bollards",
     shortDescription:
       "Crash-rated hydraulic bollards for perimeter protection and anti-ram vehicle mitigation.",
@@ -604,7 +604,7 @@ export const products: Product[] = [
     id: "12",
     name: "Tyre Killer System",
     slug: "tyre-killer-system",
-    category: "vehicle-security",
+    category: "perimeter-security",
     subcategory: "Tyre Killers",
     shortDescription:
       "High-security tyre killer with sharp blades for forceful entry prevention at critical checkpoints.",
@@ -626,15 +626,15 @@ export const products: Product[] = [
     },
     useCases: ["Military checkpoints", "High-security zones", "Border control"],
     faqs: [],
-    image: "/uploads/products/retractible-bollard-stock.png",
-    gallery: ["/uploads/products/retractible-bollard-stock.png"],
+    image: "/placeholder.svg",
+    gallery: ["/placeholder.svg"],
     industries: ["government", "transport"],
   },
   {
     id: "13",
     name: "Hand-Held Metal Detector",
     slug: "hand-held-metal-detector",
-    category: "screening",
+    category: "security-screening",
     subcategory: "HHMD",
     shortDescription:
       "Lightweight handheld metal detector with high sensitivity for secondary screening at security checkpoints.",
@@ -657,15 +657,15 @@ export const products: Product[] = [
     },
     useCases: ["Security checkpoints", "Event screening", "Schools", "Courts"],
     faqs: [],
-    image: "/uploads/products/handheld-metal-detector-stock.png",
-    gallery: ["/uploads/products/handheld-metal-detector-stock.png"],
+    image: "/placeholder.svg",
+    gallery: ["/placeholder.svg"],
     industries: ["government", "education", "transport"],
   },
   {
     id: "14",
     name: "Explosive Trace Detector",
     slug: "explosive-trace-detector",
-    category: "screening",
+    category: "security-screening",
     subcategory: "Explosive Detectors",
     shortDescription:
       "Advanced explosive trace detection system identifying nanogram-level traces of explosives and narcotics.",
@@ -689,15 +689,15 @@ export const products: Product[] = [
     },
     useCases: ["Airports", "Border crossings", "VIP events", "Military"],
     faqs: [],
-    image: "/uploads/products/security-checkpoint-stock.png",
-    gallery: ["/uploads/products/security-checkpoint-stock.png"],
+    image: "/placeholder.svg",
+    gallery: ["/placeholder.svg"],
     industries: ["government", "transport"],
   },
   {
     id: "18",
     name: "Full Height Turnstile",
     slug: "full-height-turnstile",
-    category: "access-control",
+    category: "entrance-control",
     subcategory: "Turnstiles",
     shortDescription:
       "Full-height stainless steel turnstile for controlled pedestrian access at high-security sites.",
@@ -727,7 +727,7 @@ export const products: Product[] = [
     id: "19",
     name: "Swing Barrier Gate",
     slug: "swing-barrier-gate",
-    category: "access-control",
+    category: "entrance-control",
     subcategory: "Swing Gates",
     shortDescription:
       "Motorized swing barrier for accessible, premium pedestrian entry lanes.",
@@ -761,7 +761,7 @@ export const products: Product[] = [
     id: "20",
     name: "Hydraulic Road Blocker",
     slug: "hydraulic-road-blocker",
-    category: "vehicle-security",
+    category: "perimeter-security",
     subcategory: "Road Blockers",
     shortDescription:
       "Heavy-duty rising road blocker for high-security vehicle access points.",
@@ -791,7 +791,7 @@ export const products: Product[] = [
     id: "21",
     name: "Automatic Sliding Gate Operator",
     slug: "automatic-sliding-gate-operator",
-    category: "access-control",
+    category: "vehicle-access",
     subcategory: "Gate Automation",
     shortDescription:
       "Compact motorized operator for reliable automatic sliding gate control.",

@@ -7,9 +7,9 @@ import { ArrowRight, BookOpen, FileCheck2, ScanLine, ShieldCheck } from "lucide-
 import { Link } from "react-router-dom";
 
 const resources = [
-  { title: "Biometric & Workforce Systems", desc: "Compare face, fingerprint, and palm recognition options with attendance and payroll workflows.", icon: BookOpen, href: "/products?category=biometric" },
-  { title: "Pedestrian & Vehicle Access", desc: "Review turnstiles, gates, barriers, readers, and the integration decisions around each entry point.", icon: ShieldCheck, href: "/products?category=access-control" },
-  { title: "Security Screening", desc: "Explore baggage scanners, metal detectors, UVSS, and layered checkpoint planning.", icon: ScanLine, href: "/solutions/screening-security" },
+  { title: "Biometric & Workforce Systems", desc: "Compare face, fingerprint, and palm recognition options with attendance and payroll workflows.", icon: BookOpen, href: "/products?category=biometric-attendance" },
+  { title: "Pedestrian & Vehicle Access", desc: "Review turnstiles, gates, barriers, and the integration decisions around each entry point.", icon: ShieldCheck, href: "/products?category=entrance-control" },
+  { title: "Security Screening", desc: "Explore baggage scanners, metal detectors, UVSS, and layered checkpoint planning.", icon: ScanLine, href: "/products?category=security-screening" },
 ];
 
 const Downloads = () => (
@@ -17,7 +17,7 @@ const Downloads = () => (
     <Header />
     <main>
       <section className="pb-16 pt-32" style={{ background: "var(--gradient-hero)" }}>
-        <div className="section-container text-center"><span className="eyebrow border-white/20 bg-white/10 text-orange-200">Resources</span><h1 className="mt-6 text-4xl font-heading text-white md:text-6xl">Product guidance without dead-end downloads</h1><p className="mx-auto mt-6 max-w-2xl text-lg leading-8 text-white/70">Start with the product and solution pages below. For project-specific specifications, request the exact datasheets your evaluation requires.</p></div>
+        <div className="section-container text-center"><span className="eyebrow border-white/20 bg-white/10 text-cyan-200">Resources</span><h1 className="mt-6 text-4xl font-heading text-white md:text-6xl">Product guidance without dead-end downloads</h1><p className="mx-auto mt-6 max-w-2xl text-lg leading-8 text-white/70">Start with the product and solution pages below. For project-specific specifications, request the exact datasheets your evaluation requires.</p></div>
       </section>
       <SectionWrapper>
         <div className="grid gap-6 md:grid-cols-3">

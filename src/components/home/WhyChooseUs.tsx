@@ -27,7 +27,7 @@ const WhyChooseUs = () => (
           <div className="flex items-start justify-between"><div className="flex h-12 w-12 items-center justify-center rounded-2xl border border-accent/10 bg-accent/10"><item.icon className="h-6 w-6 text-accent" /></div><span className="text-xs font-semibold tracking-[0.28em] text-muted-foreground/50">0{index + 1}</span></div>
           <h3 className="mt-8 text-xl font-heading text-foreground">{item.title}</h3>
           <p className="mt-3 max-w-xl leading-7 text-muted-foreground">{item.desc}</p>
-          <div className="absolute inset-x-0 bottom-0 h-px scale-x-0 bg-gradient-to-r from-transparent via-orange-300 to-transparent transition-transform duration-500 group-hover:scale-x-100" />
+          <div className="absolute inset-x-0 bottom-0 h-px scale-x-0 bg-gradient-to-r from-transparent via-cyan-300 to-transparent transition-transform duration-500 group-hover:scale-x-100" />
         </div>
       ))}
     </div>

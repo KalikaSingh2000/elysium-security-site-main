@@ -2,12 +2,25 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import ContactForm from "@/components/home/ContactForm";
-import { Building2, ClipboardCheck, Headphones, MapPin } from "lucide-react";
+import { Building2, ClipboardCheck, Headphones, Mail, MapPin, MessageCircle, Phone } from "lucide-react";
+import { siteConfig, whatsappLink } from "@/lib/siteConfig";
 
 const contactReasons = [
   { icon: ClipboardCheck, title: "New project", text: "Plan an access, attendance, parking, or screening deployment." },
   { icon: Building2, title: "Multi-site rollout", text: "Discuss standards, integration, and phased deployment across locations." },
   { icon: Headphones, title: "Service requirement", text: "Share the installed system and the support outcome you need." },
+];
+
+const directChannels = [
+  { icon: Phone, title: "Call us", value: siteConfig.phoneDisplay, href: siteConfig.phoneHref },
+  { icon: Mail, title: "Email us", value: siteConfig.email, href: `mailto:${siteConfig.email}` },
+  {
+    icon: MessageCircle,
+    title: "WhatsApp",
+    value: siteConfig.phoneDisplay,
+    href: whatsappLink(`Hi ${siteConfig.companyName}, I'd like to enquire about your security and access control solutions.`),
+    external: true,
+  },
 ];
 
 const Contact = () => (
@@ -17,7 +30,7 @@ const Contact = () => (
       <section className="pb-16 pt-32" style={{ background: "var(--gradient-hero)" }}>
         <div className="section-container grid gap-8 lg:grid-cols-[1fr_auto] lg:items-end">
           <div className="max-w-3xl">
-            <span className="eyebrow border-white/20 bg-white/10 text-orange-200">Contact Elysium Security</span>
+            <span className="eyebrow border-white/20 bg-white/10 text-cyan-200">Contact {siteConfig.companyName}</span>
             <h1 className="mt-6 text-4xl font-heading text-white md:text-6xl">Start with your site. We’ll help shape the system.</h1>
             <p className="mt-6 max-w-2xl text-lg leading-8 text-white/70">Use the enquiry form for project planning, product guidance, multi-location requirements, or service discussions.</p>
           </div>
@@ -28,6 +41,22 @@ const Contact = () => (
       </section>
 
       <section className="section-container -mt-6 grid gap-4 md:grid-cols-3">
+        {directChannels.map((item) => (
+          <a
+            key={item.title}
+            href={item.href}
+            target={item.external ? "_blank" : undefined}
+            rel={item.external ? "noopener noreferrer" : undefined}
+            className="group rounded-[1.4rem] border border-border bg-card p-5 shadow-card transition-colors hover:border-accent/40"
+          >
+            <item.icon className="h-6 w-6 text-accent" />
+            <h2 className="mt-4 text-lg font-heading text-foreground">{item.title}</h2>
+            <p className="mt-2 text-sm leading-6 text-muted-foreground group-hover:text-foreground">{item.value}</p>
+          </a>
+        ))}
+      </section>
+
+      <section className="section-container mt-10 grid gap-4 md:grid-cols-3">
         {contactReasons.map((item) => (
           <div key={item.title} className="rounded-[1.4rem] border border-border bg-card p-5 shadow-card">
             <item.icon className="h-6 w-6 text-accent" />

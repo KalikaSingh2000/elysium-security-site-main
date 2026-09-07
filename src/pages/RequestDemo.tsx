@@ -7,7 +7,14 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { Link } from "react-router-dom";
-import { Send, CheckCircle2 } from "lucide-react";
+import { Send, CheckCircle2, Mail, MessageCircle, Phone } from "lucide-react";
+import { siteConfig, whatsappLink } from "@/lib/siteConfig";
+
+const quickActions = [
+  { icon: Phone, label: "Call Now", value: siteConfig.phoneDisplay, href: siteConfig.phoneHref },
+  { icon: MessageCircle, label: "WhatsApp", value: siteConfig.phoneDisplay, href: whatsappLink(`Hi ${siteConfig.companyName}, I'd like to request a quote.`), external: true },
+  { icon: Mail, label: "Email", value: siteConfig.email, href: `mailto:${siteConfig.email}` },
+];
 
 const productOptions = [
   "Biometric attendance",
@@ -25,9 +32,22 @@ const RequestDemo = () => (
     <main>
       <section className="pb-16 pt-32" style={{ background: "var(--gradient-hero)" }}>
         <div className="section-container text-center">
-          <span className="eyebrow border-white/20 bg-white/10 text-orange-200">Solution Consultation</span>
+          <span className="eyebrow border-white/20 bg-white/10 text-cyan-200">Request a Quote</span>
           <h1 className="mx-auto mt-6 max-w-4xl text-4xl font-heading text-white md:text-6xl">See how the right system fits your operation</h1>
-          <p className="mx-auto mt-6 max-w-2xl text-lg leading-8 text-white/70">Request a focused consultation or product demonstration based on your site, workflow, and integration needs.</p>
+          <p className="mx-auto mt-6 max-w-2xl text-lg leading-8 text-white/70">Request a quote, a focused consultation, or a product demonstration based on your site, workflow, and integration needs.</p>
+          <div className="mx-auto mt-8 flex max-w-2xl flex-wrap justify-center gap-3">
+            {quickActions.map((action) => (
+              <a
+                key={action.label}
+                href={action.href}
+                target={action.external ? "_blank" : undefined}
+                rel={action.external ? "noopener noreferrer" : undefined}
+                className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/10 px-4 py-2 text-sm font-semibold text-white transition-colors hover:bg-white/20"
+              >
+                <action.icon className="h-4 w-4 text-cyan-200" /> {action.label}
+              </a>
+            ))}
+          </div>
         </div>
       </section>
 
@@ -65,9 +85,10 @@ const RequestDemo = () => (
               <div className="space-y-2"><Label htmlFor="demo-solution">Area of interest</Label><select id="demo-solution" name="solution" required className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm"><option value="">Select one</option>{productOptions.map((option) => <option key={option}>{option}</option>)}</select></div>
               <div className="space-y-2"><Label htmlFor="demo-city">City or project location</Label><Input id="demo-city" name="city" autoComplete="address-level2" required /></div>
             </div>
+            <div className="space-y-2"><Label htmlFor="demo-quantity">Quantity or number of sites (if known)</Label><Input id="demo-quantity" name="quantity" placeholder="e.g. 4 units, 1 site" /></div>
             <div className="space-y-2"><Label htmlFor="demo-message">What would you like to evaluate?</Label><Textarea id="demo-message" name="message" rows={4} required /></div>
-            <p className="text-xs leading-5 text-muted-foreground">By submitting, you agree that Elysium Security may contact you about this request. See our <Link to="/privacy-policy" className="font-medium text-accent hover:underline">Privacy Policy</Link>.</p>
-            <Button type="submit" variant="hero" size="lg" className="w-full">Request Consultation <Send className="h-4 w-4" /></Button>
+            <p className="text-xs leading-5 text-muted-foreground">By submitting, you agree that {siteConfig.companyName} may contact you about this request. See our <Link to="/privacy-policy" className="font-medium text-accent hover:underline">Privacy Policy</Link>.</p>
+            <Button type="submit" variant="hero" size="lg" className="w-full">Submit Enquiry <Send className="h-4 w-4" /></Button>
           </form>
         </div>
       </SectionWrapper>

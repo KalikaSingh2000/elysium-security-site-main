@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { siteConfig } from "@/lib/siteConfig";
 
 interface ContentImageProps {
   src?: string;
@@ -26,7 +27,7 @@ const ContentImage = ({
         <div className="flex h-full min-h-[240px] items-end bg-[radial-gradient(circle_at_top_left,_rgba(56,189,248,0.28),_transparent_32%),linear-gradient(135deg,_#0f172a_0%,_#14213d_45%,_#0f766e_100%)] p-6">
           <div className="max-w-xs space-y-2">
             <span className="inline-flex rounded-full border border-white/20 bg-white/10 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.24em] text-white/75">
-              Elysium Security
+              {siteConfig.companyName}
             </span>
             <p className="text-sm leading-6 text-white/80">{label}</p>
           </div>

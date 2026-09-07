@@ -5,6 +5,7 @@ import SectionWrapper from "@/components/SectionWrapper";
 import SectionHeading from "@/components/SectionHeading";
 import { ClipboardCheck, Globe, Headphones, Layers, Shield, Target, Users, Wrench } from "lucide-react";
 import heroImage from "@/assets/hero-security.jpg";
+import { siteConfig } from "@/lib/siteConfig";
 
 const principles = [
   { icon: Shield, title: "Integrity", desc: "Recommendations are tied to the operating need, with clear scope and accountable handover." },
@@ -28,9 +29,10 @@ const About = () => (
       <section className="mesh-section overflow-hidden pb-20 pt-32">
         <div className="section-container grid gap-10 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
           <div className="max-w-3xl">
-            <span className="eyebrow">About Elysium Security</span>
+            <span className="eyebrow">About {siteConfig.companyName}</span>
             <h1 className="mt-6 text-4xl font-heading leading-[1.02] text-foreground md:text-6xl">Security integration built around real operations</h1>
-            <p className="mt-6 max-w-2xl text-lg leading-8 text-muted-foreground">Elysium Security helps organizations plan and deploy systems for workforce identity, pedestrian and vehicle access, parking, visitor flow, and security screening.</p>
+            <p className="mt-6 max-w-2xl text-lg leading-8 text-muted-foreground">{siteConfig.companyName} helps organizations plan and deploy systems for workforce identity, pedestrian and vehicle access, parking, visitor flow, and security screening.</p>
+            <p className="mt-4 max-w-2xl text-base font-semibold text-accent">{siteConfig.tagline}</p>
             <div className="mt-8 flex flex-wrap gap-3">
               {["Site-led planning", "Hardware + software", "Installation + training", "Lifecycle support"].map((item) => <span key={item} className="rounded-full border border-border bg-white px-4 py-2 text-sm font-semibold text-foreground">{item}</span>)}
             </div>
@@ -38,7 +40,7 @@ const About = () => (
           <div className="relative overflow-hidden rounded-[2rem] border border-white/70 bg-white p-3 shadow-xl">
             <img src={heroImage} alt="Integrated physical security systems" className="min-h-[380px] w-full rounded-[1.5rem] object-cover" />
             <div className="absolute inset-x-8 bottom-8 rounded-[1.25rem] border border-white/20 bg-slate-950/75 p-5 text-white backdrop-blur-md">
-              <div className="text-xs uppercase tracking-[0.24em] text-orange-200">Our focus</div>
+              <div className="text-xs uppercase tracking-[0.24em] text-cyan-200">Our focus</div>
               <div className="mt-2 text-lg font-semibold">Systems that remain clear, usable, and supportable after handover.</div>
             </div>
           </div>

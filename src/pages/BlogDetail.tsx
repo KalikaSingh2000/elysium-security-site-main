@@ -156,7 +156,7 @@ const BlogDetail = () => {
                   Product selection should follow site conditions, throughput, integration,
                   and support requirements. Discuss your application with our team.
                 </p>
-                <Link to="/contact" className="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-orange-200">Request guidance <ArrowRight className="h-4 w-4" /></Link>
+                <Link to="/contact" className="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-cyan-200">Request guidance <ArrowRight className="h-4 w-4" /></Link>
               </div>
             </aside>
           </div>

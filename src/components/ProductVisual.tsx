@@ -1,19 +1,21 @@
-import { Fingerprint, ScanFace, Hand, Shield, Car, ScanLine, Search, Eye, Siren } from "lucide-react";
+import { Fingerprint, ScanFace, Hand, Shield, DoorOpen, Car, ShieldAlert, ScanLine, Search, Eye, Siren } from "lucide-react";
 import { cn } from "@/lib/utils";
 import type { Product } from "@/data/products";
 
 const iconMap = {
-  biometric: Fingerprint,
-  "access-control": Shield,
-  "vehicle-security": Car,
-  screening: ScanLine,
+  "biometric-attendance": Fingerprint,
+  "entrance-control": DoorOpen,
+  "vehicle-access": Car,
+  "perimeter-security": ShieldAlert,
+  "security-screening": ScanLine,
 } as const;
 
 const accentMap = {
-  biometric: "from-sky-500/25 via-cyan-400/10 to-transparent",
-  "access-control": "from-orange-500/25 via-amber-400/10 to-transparent",
-  "vehicle-security": "from-emerald-500/25 via-lime-400/10 to-transparent",
-  screening: "from-fuchsia-500/20 via-violet-400/10 to-transparent",
+  "biometric-attendance": "from-sky-500/25 via-cyan-400/10 to-transparent",
+  "entrance-control": "from-blue-500/25 via-indigo-400/10 to-transparent",
+  "vehicle-access": "from-emerald-500/25 via-teal-400/10 to-transparent",
+  "perimeter-security": "from-slate-500/25 via-blue-400/10 to-transparent",
+  "security-screening": "from-fuchsia-500/20 via-violet-400/10 to-transparent",
 } as const;
 
 const subcategoryIcon = (subcategory: string) => {
@@ -57,7 +59,7 @@ const ProductVisual = ({
 
   const PrimaryIcon = iconMap[product.category as keyof typeof iconMap] ?? Shield;
   const SecondaryIcon = subcategoryIcon(product.subcategory);
-  const accent = accentMap[product.category as keyof typeof accentMap] ?? "from-orange-500/20 via-amber-400/10 to-transparent";
+  const accent = accentMap[product.category as keyof typeof accentMap] ?? "from-cyan-500/20 via-sky-400/10 to-transparent";
 
   return (
     <div
@@ -73,7 +75,7 @@ const ProductVisual = ({
       </div>
       {SecondaryIcon && (
         <div className="absolute bottom-6 right-8 rounded-2xl border border-white/10 bg-white/10 p-3 backdrop-blur-sm">
-          <SecondaryIcon className="h-6 w-6 text-orange-200" strokeWidth={1.8} />
+          <SecondaryIcon className="h-6 w-6 text-cyan-200" strokeWidth={1.8} />
         </div>
       )}
       <div className="relative flex h-full flex-col justify-end p-6 text-white">

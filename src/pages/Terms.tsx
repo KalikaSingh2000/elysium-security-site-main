@@ -1,6 +1,7 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import SectionWrapper from "@/components/SectionWrapper";
+import { siteConfig } from "@/lib/siteConfig";
 
 const Terms = () => (
   <>
@@ -16,8 +17,8 @@ const Terms = () => (
         <div className="max-w-3xl mx-auto space-y-6">
           {[
             { title: "Acceptance of Terms", content: "By accessing and using this website, you accept and agree to be bound by these Terms of Service. If you do not agree, please do not use our website." },
-            { title: "Services", content: "Elysium Security provides information about security hardware, software solutions, integration, deployment, and related services. Final scope, specifications, availability, and commercial terms are defined in the applicable proposal or agreement." },
-            { title: "Intellectual Property", content: "Unless otherwise stated, the website's original text, brand assets, interface, and other owned materials belong to Elysium Security or its licensors and are protected by applicable law." },
+            { title: "Services", content: `${siteConfig.companyName} provides information about security hardware, software solutions, integration, deployment, and related services. Final scope, specifications, availability, and commercial terms are defined in the applicable proposal or agreement.` },
+            { title: "Intellectual Property", content: `Unless otherwise stated, the website's original text, brand assets, interface, and other owned materials belong to ${siteConfig.companyName} or its licensors and are protected by applicable law.` },
             { title: "Warranty & Liability", content: "Product warranties and service obligations are governed by the applicable manufacturer terms and the written agreement for each project. Website information is general and does not replace a signed proposal or contract." },
             { title: "Payment Terms", content: "Payment terms are as specified in individual quotations and purchase orders. All prices are subject to applicable taxes." },
             { title: "Installation & Support", content: "Installation services are provided as per the scope agreed in the project proposal. Annual maintenance contracts are available separately." },

@@ -24,15 +24,15 @@
     --muted: 214 20% 94%;
     --muted-foreground: 218 12% 42%;
 
-    --accent: 24 98% 57%;
-    --accent-foreground: 30 30% 10%;
+    --accent: 199 94% 54%;
+    --accent-foreground: 222 60% 10%;
 
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 100%;
 
     --border: 214 18% 87%;
     --input: 214 18% 87%;
-    --ring: 24 98% 57%;
+    --ring: 199 94% 54%;
 
     --radius: 0.625rem;
 
@@ -56,7 +56,7 @@
     --surface-alt: 214 20% 94%;
 
     --gradient-primary: linear-gradient(135deg, hsl(225 68% 7%), hsl(216 46% 18%));
-    --gradient-accent: linear-gradient(135deg, hsl(21 98% 58%), hsl(34 100% 68%));
+    --gradient-accent: linear-gradient(135deg, hsl(199 94% 54%), hsl(217 91% 60%));
     --gradient-hero: linear-gradient(135deg, hsl(225 68% 6%) 0%, hsl(221 57% 12%) 48%, hsl(214 45% 20%) 100%);
     --gradient-card: linear-gradient(180deg, hsl(0 0% 100%) 0%, hsl(210 20% 97%) 100%);
 
@@ -64,7 +64,7 @@
     --shadow-md: 0 12px 34px hsl(222 34% 13% / 0.08);
     --shadow-lg: 0 22px 60px hsl(222 34% 13% / 0.12);
     --shadow-xl: 0 34px 90px hsl(222 34% 13% / 0.16);
-    --shadow-accent: 0 20px 60px hsl(24 98% 57% / 0.22);
+    --shadow-accent: 0 20px 60px hsl(199 94% 54% / 0.22);
   }
 
   .dark {
@@ -97,8 +97,8 @@
   body {
     @apply bg-background text-foreground font-body antialiased;
     background-image:
-      radial-gradient(circle at 8% 4%, hsl(24 98% 57% / 0.06), transparent 22%),
-      radial-gradient(circle at 92% 14%, hsl(199 94% 54% / 0.05), transparent 18%),
+      radial-gradient(circle at 8% 4%, hsl(199 94% 54% / 0.06), transparent 22%),
+      radial-gradient(circle at 92% 14%, hsl(217 91% 60% / 0.05), transparent 18%),
       linear-gradient(180deg, hsl(210 20% 99%) 0%, hsl(214 20% 96%) 100%);
     min-width: 320px;
   }
@@ -185,9 +185,9 @@
     animation: pulse-drift 12s ease-in-out infinite;
   }
   .brand-logo-image {
-    height: 3rem;
+    height: 4rem;
     width: auto;
-    max-width: 5.5rem;
+    max-width: 7rem;
     object-fit: contain;
     image-rendering: auto;
   }
@@ -238,6 +238,9 @@
     background: linear-gradient(90deg, transparent, rgba(104, 211, 255, 0.85), transparent);
     animation: sweepX 7.2s linear infinite;
   }
+  .loader-sweep {
+    animation: loaderSweep 1.1s ease-in-out infinite;
+  }
 }
 
 @keyframes fadeUp {
@@ -270,6 +273,11 @@
   12% { opacity: 1; }
   55% { opacity: 0.9; }
   100% { transform: translateX(35%); opacity: 0; }
+}
+
+@keyframes loaderSweep {
+  0% { transform: translateX(-120%); }
+  100% { transform: translateX(340%); }
 }
 
 @keyframes slide-in-left {

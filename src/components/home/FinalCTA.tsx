@@ -18,7 +18,7 @@ const FinalCTA = () => (
       </p>
       <div className="flex flex-wrap justify-center gap-4">
         <Link to="/contact">
-          <Button variant="hero" size="lg" className="px-8 text-base shadow-[0_20px_40px_rgba(255,108,31,0.28)]">
+          <Button variant="hero" size="lg" className="px-8 text-base shadow-[0_20px_40px_rgba(34,211,238,0.28)]">
             Request a Site Assessment <ArrowRight className="w-4 h-4" />
           </Button>
         </Link>

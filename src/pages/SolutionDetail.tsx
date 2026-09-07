@@ -4,13 +4,26 @@ import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import SectionWrapper from "@/components/SectionWrapper";
 import { getSolutionBySlug } from "@/data/solutions";
+import { products } from "@/data/products";
 import { Button } from "@/components/ui/button";
 import { ArrowLeft, ArrowRight, Check, AlertTriangle } from "lucide-react";
 import SolutionVisual from "@/components/SolutionVisual";
+import ProductVisual from "@/components/ProductVisual";
+import {
+  Breadcrumb,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbList,
+  BreadcrumbPage,
+  BreadcrumbSeparator,
+} from "@/components/ui/breadcrumb";
 
 const SolutionDetail = () => {
   const { slug } = useParams<{ slug: string }>();
   const solution = getSolutionBySlug(slug || "");
+  const relatedProducts = solution
+    ? solution.relatedProducts.map((id) => products.find((product) => product.id === id)).filter(Boolean)
+    : [];
 
   if (!solution) {
     return (
@@ -31,6 +44,25 @@ const SolutionDetail = () => {
       <main>
         <section className="pt-32 pb-16" style={{ background: "var(--gradient-hero)" }}>
           <div className="section-container">
+            <Breadcrumb className="mb-6">
+              <BreadcrumbList className="text-primary-foreground/60">
+                <BreadcrumbItem>
+                  <BreadcrumbLink asChild className="hover:text-white">
+                    <Link to="/">Home</Link>
+                  </BreadcrumbLink>
+                </BreadcrumbItem>
+                <BreadcrumbSeparator />
+                <BreadcrumbItem>
+                  <BreadcrumbLink asChild className="hover:text-white">
+                    <Link to="/solutions">Solutions</Link>
+                  </BreadcrumbLink>
+                </BreadcrumbItem>
+                <BreadcrumbSeparator />
+                <BreadcrumbItem>
+                  <BreadcrumbPage className="text-white">{solution.name}</BreadcrumbPage>
+                </BreadcrumbItem>
+              </BreadcrumbList>
+            </Breadcrumb>
             <Link to="/solutions" className="mb-6 inline-flex items-center gap-1 text-sm text-primary-foreground/70 transition-colors hover:text-accent">
               <ArrowLeft className="h-4 w-4" /> Back to Solutions
             </Link>
@@ -97,6 +129,25 @@ const SolutionDetail = () => {
             ))}
           </div>
         </SectionWrapper>
+
+        {relatedProducts.length > 0 && (
+          <SectionWrapper className="bg-secondary">
+            <h2 className="mb-8 text-center text-2xl font-heading font-bold text-foreground">Products Used in This Solution</h2>
+            <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
+              {relatedProducts.map((product) => product && (
+                <Link key={product.id} to={`/products/${product.slug}`} className="group overflow-hidden rounded-[1.6rem] border border-border bg-card card-hover">
+                  <div className="aspect-[4/3] bg-secondary">
+                    <ProductVisual product={product} imageClassName="group-hover:scale-[1.04]" />
+                  </div>
+                  <div className="p-4">
+                    <span className="text-xs font-medium uppercase tracking-wider text-accent">{product.subcategory}</span>
+                    <h3 className="mt-1 font-heading text-sm font-semibold text-foreground">{product.name}</h3>
+                  </div>
+                </Link>
+              ))}
+            </div>
+          </SectionWrapper>
+        )}
 
         <section className="py-16" style={{ background: "var(--gradient-hero)" }}>
           <div className="section-container text-center">

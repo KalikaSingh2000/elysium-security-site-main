@@ -9,6 +9,7 @@ import { ArrowRight, Search } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import ProductVisual from "@/components/ProductVisual";
+import Reveal from "@/components/Reveal";
 
 const Products = () => {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -50,8 +51,8 @@ const Products = () => {
               Enterprise Security Hardware Catalog
             </h1>
             <p className="mx-auto max-w-2xl text-lg text-primary-foreground/70">
-              Compare biometric, access control, vehicle security, and screening devices by
-              application, capabilities, and technical requirements.
+              Compare biometric, entrance control, vehicle access, perimeter security, and
+              screening devices by application, capabilities, and technical requirements.
             </p>
           </div>
         </section>
@@ -89,20 +90,22 @@ const Products = () => {
 
             <p className="mb-6 text-sm text-muted-foreground">{filtered.length} products found</p>
             <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-              {filtered.map((product) => (
-                <Link key={product.id} to={`/products/${product.slug}`} className="group overflow-hidden rounded-[1.8rem] border border-border bg-card card-hover">
-                  <div className="aspect-[4/3] bg-secondary">
-                    <ProductVisual product={product} imageClassName="group-hover:scale-[1.04]" />
-                  </div>
-                  <div className="p-5">
-                    <span className="text-xs font-medium uppercase tracking-wider text-accent">{product.subcategory}</span>
-                    <h3 className="mt-1 mb-2 font-heading font-semibold text-foreground">{product.name}</h3>
-                    <p className="mb-3 line-clamp-2 text-sm text-muted-foreground">{product.shortDescription}</p>
-                    <span className="inline-flex items-center gap-1 text-sm font-medium text-accent transition-all group-hover:gap-2">
-                      View Details <ArrowRight className="h-3.5 w-3.5" />
-                    </span>
-                  </div>
-                </Link>
+              {filtered.map((product, index) => (
+                <Reveal key={product.id} delay={(index % 8) * 60}>
+                  <Link to={`/products/${product.slug}`} className="group block h-full overflow-hidden rounded-[1.8rem] border border-border bg-card card-hover">
+                    <div className="aspect-[4/3] bg-secondary">
+                      <ProductVisual product={product} imageClassName="group-hover:scale-[1.04]" />
+                    </div>
+                    <div className="p-5">
+                      <span className="text-xs font-medium uppercase tracking-wider text-accent">{product.subcategory}</span>
+                      <h3 className="mt-1 mb-2 font-heading font-semibold text-foreground">{product.name}</h3>
+                      <p className="mb-3 line-clamp-2 text-sm text-muted-foreground">{product.shortDescription}</p>
+                      <span className="inline-flex items-center gap-1 text-sm font-medium text-accent transition-all group-hover:gap-2">
+                        View Details <ArrowRight className="h-3.5 w-3.5" />
+                      </span>
+                    </div>
+                  </Link>
+                </Reveal>
               ))}
             </div>
           </div>

@@ -6,6 +6,7 @@ import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { Link } from "react-router-dom";
 import { CheckCircle2, Send } from "lucide-react";
+import { siteConfig } from "@/lib/siteConfig";
 
 const benefits = [
   "A consultation focused on your operating requirements",
@@ -72,7 +73,7 @@ const ContactForm = () => (
           <Textarea id="home-requirement" name="requirement" rows={5} placeholder="Site type, locations, products of interest, and the problem you want to solve" required />
         </div>
         <p className="text-xs leading-5 text-muted-foreground">
-          By submitting, you agree that Elysium Security may contact you about this enquiry. See our{" "}
+          By submitting, you agree that {siteConfig.companyName} may contact you about this enquiry. See our{" "}
           <Link to="/privacy-policy" className="font-medium text-accent hover:underline">Privacy Policy</Link>.
         </p>
         <Button type="submit" variant="hero" size="lg" className="w-full">

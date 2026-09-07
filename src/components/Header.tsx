@@ -1,8 +1,10 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { ArrowUpRight, ChevronDown, Menu, X } from "lucide-react";
 import BrandLogo from "@/components/BrandLogo";
+import SearchCommand from "@/components/SearchCommand";
+import { siteConfig } from "@/lib/siteConfig";
 
 const navigation = [
   { name: "Home", href: "/" },
@@ -11,10 +13,11 @@ const navigation = [
     name: "Products",
     href: "/products",
     children: [
-      { name: "Biometric Devices", href: "/products?category=biometric" },
-      { name: "Access Control", href: "/products?category=access-control" },
-      { name: "Vehicle Security", href: "/products?category=vehicle-security" },
-      { name: "Screening Devices", href: "/products?category=screening" },
+      { name: "Biometric & Attendance", href: "/products?category=biometric-attendance" },
+      { name: "Entrance Control", href: "/products?category=entrance-control" },
+      { name: "Vehicle Access & Gate Automation", href: "/products?category=vehicle-access" },
+      { name: "Perimeter Security", href: "/products?category=perimeter-security" },
+      { name: "Security Screening", href: "/products?category=security-screening" },
     ],
   },
   {
@@ -28,7 +31,16 @@ const navigation = [
       { name: "Screening & Security", href: "/solutions/screening-security" },
     ],
   },
-  { name: "Insights", href: "/blog" },
+  { name: "Industries", href: "/industries" },
+  {
+    name: "Resources",
+    href: "/blog",
+    children: [
+      { name: "Insights & Guides", href: "/blog" },
+      { name: "Case Studies", href: "/case-studies" },
+      { name: "Downloads", href: "/downloads" },
+    ],
+  },
   { name: "Contact", href: "/contact" },
 ];
 
@@ -37,6 +49,7 @@ const Header = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
   const location = useLocation();
+  const headerRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 24);
@@ -50,15 +63,35 @@ const Header = () => {
     setOpenDropdown(null);
   }, [location]);
 
+  useEffect(() => {
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        setOpenDropdown(null);
+        setMobileOpen(false);
+      }
+    };
+    const handleOutsideClick = (event: MouseEvent) => {
+      if (headerRef.current && !headerRef.current.contains(event.target as Node)) {
+        setOpenDropdown(null);
+      }
+    };
+    document.addEventListener("keydown", handleKeyDown);
+    document.addEventListener("mousedown", handleOutsideClick);
+    return () => {
+      document.removeEventListener("keydown", handleKeyDown);
+      document.removeEventListener("mousedown", handleOutsideClick);
+    };
+  }, []);
+
   return (
-    <header className="fixed inset-x-0 top-0 z-50 px-3 pt-3 sm:px-5">
+    <header ref={headerRef} className="fixed inset-x-0 top-0 z-50 px-3 pt-3 sm:px-5">
       <div className={`mx-auto max-w-[1440px] rounded-[1.35rem] border border-white/80 bg-white/90 text-foreground backdrop-blur-2xl transition-all duration-500 ${isScrolled ? "shadow-[0_20px_60px_rgba(15,23,42,0.16)]" : "shadow-[0_14px_40px_rgba(15,23,42,0.1)]"}`}>
-        <div className={`flex items-center justify-between px-4 transition-all duration-500 sm:px-6 ${isScrolled ? "h-[68px]" : "h-[76px]"}`}>
-          <Link to="/" className="flex min-w-0 items-center gap-3" aria-label="Elysium Security home">
-            <BrandLogo imageClassName="!h-11 !max-w-[4.5rem]" />
+        <div className={`flex items-center justify-between px-4 transition-all duration-500 sm:px-6 ${isScrolled ? "h-[72px]" : "h-[84px]"}`}>
+          <Link to="/" className="flex min-w-0 items-center gap-3" aria-label={`${siteConfig.companyName} home`}>
+            <BrandLogo imageClassName="!h-14 !max-w-[6.5rem] sm:!h-16 sm:!max-w-[7.5rem]" />
             <div className="hidden min-[460px]:block">
-              <div className="font-heading text-base font-bold tracking-tight text-foreground sm:text-lg">Elysium Security</div>
-              <div className="mt-0.5 text-[9px] font-semibold uppercase tracking-[0.25em] text-muted-foreground sm:text-[10px]">Integrated Protection Systems</div>
+              <div className="font-heading text-base font-bold tracking-tight text-foreground sm:text-lg">{siteConfig.companyName}</div>
+              <div className="mt-0.5 text-[9px] font-semibold uppercase tracking-[0.25em] text-muted-foreground sm:text-[10px]">{siteConfig.tagline}</div>
             </div>
           </Link>
 
@@ -69,7 +102,7 @@ const Header = () => {
                   {item.name}{item.children && <ChevronDown className="h-3.5 w-3.5" />}
                 </Link>
                 {item.children && openDropdown === item.name && (
-                  <div role="menu" className="absolute left-0 top-full mt-3 w-64 rounded-[1.25rem] border border-border bg-white p-2 shadow-[0_24px_70px_rgba(15,23,42,0.18)]">
+                  <div role="menu" className="absolute left-0 top-full mt-3 w-72 rounded-[1.25rem] border border-border bg-white p-2 shadow-[0_24px_70px_rgba(15,23,42,0.18)]">
                     {item.children.map((child) => <Link role="menuitem" key={child.name} to={child.href} className="block rounded-xl px-4 py-3 text-sm text-muted-foreground transition-colors hover:bg-secondary hover:text-accent">{child.name}</Link>)}
                   </div>
                 )}
@@ -78,15 +111,21 @@ const Header = () => {
           </nav>
 
           <div className="flex items-center gap-2">
-            <Link to="/contact" className="hidden sm:block"><Button variant="hero" size="sm" className="rounded-full px-5">Start a Project <ArrowUpRight className="h-4 w-4" /></Button></Link>
+            <div className="hidden md:block">
+              <SearchCommand />
+            </div>
+            <Link to="/request-demo" className="hidden sm:block"><Button variant="hero" size="sm" className="rounded-full px-5">Request a Quote <ArrowUpRight className="h-4 w-4" /></Button></Link>
             <button className="rounded-full border border-border p-2.5 text-foreground lg:hidden" aria-label={mobileOpen ? "Close navigation menu" : "Open navigation menu"} aria-expanded={mobileOpen} onClick={() => setMobileOpen(!mobileOpen)}>{mobileOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}</button>
           </div>
         </div>
 
         {mobileOpen && (
           <div className="border-t border-border px-4 pb-5 pt-3 lg:hidden">
+            <div className="mb-2 md:hidden">
+              <SearchCommand />
+            </div>
             {navigation.map((item) => <div key={item.name}><Link to={item.href} className="block rounded-xl px-3 py-3 font-medium text-foreground hover:bg-secondary">{item.name}</Link>{item.children && <div className="grid grid-cols-2 gap-1 px-3 pb-2">{item.children.map((child) => <Link key={child.name} to={child.href} className="rounded-lg px-2 py-2 text-xs leading-5 text-muted-foreground hover:bg-secondary hover:text-foreground">{child.name}</Link>)}</div>}</div>)}
-            <Link to="/contact" className="mt-3 block rounded-full bg-accent px-4 py-3 text-center font-semibold text-accent-foreground sm:hidden">Start a Project</Link>
+            <Link to="/request-demo" className="mt-3 block rounded-full bg-accent px-4 py-3 text-center font-semibold text-accent-foreground sm:hidden">Request a Quote</Link>
           </div>
         )}
       </div>
