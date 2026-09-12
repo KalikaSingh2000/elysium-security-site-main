@@ -31,16 +31,6 @@ const navigation = [
       { name: "Screening & Security", href: "/solutions/screening-security" },
     ],
   },
-  { name: "Industries", href: "/industries" },
-  {
-    name: "Resources",
-    href: "/blog",
-    children: [
-      { name: "Insights & Guides", href: "/blog" },
-      { name: "Case Studies", href: "/case-studies" },
-      { name: "Downloads", href: "/downloads" },
-    ],
-  },
   { name: "Contact", href: "/contact" },
 ];
 
