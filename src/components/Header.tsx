@@ -77,11 +77,11 @@ const Header = () => {
     <header ref={headerRef} className="fixed inset-x-0 top-0 z-50 px-3 pt-3 sm:px-5">
       <div className={`mx-auto max-w-[1440px] rounded-[1.35rem] border border-white/80 bg-white/90 text-foreground backdrop-blur-2xl transition-all duration-500 ${isScrolled ? "shadow-[0_20px_60px_rgba(15,23,42,0.16)]" : "shadow-[0_14px_40px_rgba(15,23,42,0.1)]"}`}>
         <div className={`flex items-center justify-between px-4 transition-all duration-500 sm:px-6 ${isScrolled ? "h-[72px]" : "h-[84px]"}`}>
-          <Link to="/" className="flex min-w-0 items-center gap-3" aria-label={`${siteConfig.companyName} home`}>
-            <BrandLogo imageClassName="!h-14 !max-w-[6.5rem] sm:!h-16 sm:!max-w-[7.5rem]" />
-            <div className="hidden min-[460px]:block">
-              <div className="font-heading text-base font-bold tracking-tight text-foreground sm:text-lg">{siteConfig.companyName}</div>
-              <div className="mt-0.5 text-[9px] font-semibold uppercase tracking-[0.25em] text-muted-foreground sm:text-[10px]">{siteConfig.tagline}</div>
+          <Link to="/" className="flex min-w-0 flex-1 items-center gap-2 sm:gap-3" aria-label={`${siteConfig.companyName} home`}>
+            <BrandLogo imageClassName="!h-11 !max-w-[5rem] shrink-0 sm:!h-16 sm:!max-w-[7.5rem]" />
+            <div className="min-w-0">
+              <div className="truncate font-heading text-sm font-bold tracking-tight text-foreground sm:text-lg">{siteConfig.companyName}</div>
+              <div className="mt-0.5 truncate text-[8px] font-semibold uppercase tracking-[0.2em] text-muted-foreground sm:text-[10px] sm:tracking-[0.25em]">{siteConfig.tagline}</div>
             </div>
           </Link>
 

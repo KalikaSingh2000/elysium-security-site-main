@@ -77,8 +77,8 @@ export const products: Product[] = [
           "The system can recognize faces from 0.3m to 3m distance, making it suitable for various installation scenarios.",
       },
     ],
-    image: "/placeholder.svg",
-    gallery: ["/placeholder.svg"],
+    image: "/uploads/products/face-recognition-attendance.jpg",
+    gallery: ["/uploads/products/face-recognition-attendance.jpg"],
     industries: ["corporate", "industrial", "education", "government"],
   },
   {
@@ -562,8 +562,8 @@ export const products: Product[] = [
       "Critical infrastructure",
     ],
     faqs: [],
-    image: "/placeholder.svg",
-    gallery: ["/placeholder.svg"],
+    image: "/uploads/products/vehicle-inspection-stock.png",
+    gallery: ["/uploads/products/vehicle-inspection-stock.png"],
     industries: ["government", "transport"],
   },
   {
@@ -657,8 +657,8 @@ export const products: Product[] = [
     },
     useCases: ["Security checkpoints", "Event screening", "Schools", "Courts"],
     faqs: [],
-    image: "/placeholder.svg",
-    gallery: ["/placeholder.svg"],
+    image: "/uploads/products/handheld-metal-detector-stock.png",
+    gallery: ["/uploads/products/handheld-metal-detector-stock.png"],
     industries: ["government", "education", "transport"],
   },
   {
